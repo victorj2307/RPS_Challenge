@@ -1,0 +1,4 @@
+D:\Programacion\WebSites\ASPNet\RPS_Challenge\Services\bin\Debug\RPS_Challenge.Services.dll
+D:\Programacion\WebSites\ASPNet\RPS_Challenge\Services\bin\Debug\RPS_Challenge.Services.pdb
+D:\Programacion\WebSites\ASPNet\RPS_Challenge\Services\obj\Debug\RPS_Challenge.Services.dll
+D:\Programacion\WebSites\ASPNet\RPS_Challenge\Services\obj\Debug\RPS_Challenge.Services.pdb

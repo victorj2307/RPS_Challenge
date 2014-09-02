@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ScoresModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityType Name="Score">
+    <Key>
+      <PropertyRef Name="PlayerName" />
+    </Key>
+    <Property Name="PlayerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Points" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="ScoresEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Scores" EntityType="Self.Score" />
+  </EntityContainer>
+</Schema>

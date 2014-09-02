@@ -1,0 +1,18 @@
+[
+[
+[ ["Armando", "P"], ["Dave", "S"] ],
+[ ["Richard", "R"], ["Michael", "S"] ],
+],
+[
+[ ["Allen", "S"], ["Omer", "P"] ],
+[ ["John", "R"], ["Robert", "P"] ],
+],
+[
+[ ["Victor", "R"], ["Ivan", "S"] ],
+[ ["Julio", "S"], ["Jimena", "R"] ],
+],
+[
+[ ["Elena", "S"]["Elena", "S"], ["Cesar", "P"] ],
+[ ["Camila", "R"], ["Beto", "S"] ]
+]
+]
