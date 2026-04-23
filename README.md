@@ -2,12 +2,12 @@
 
 Rock-Paper-Scissors tournament web app built on .NET Framework 4.8.
 
-This project started as a WebForms technical challenge and has been incrementally migrated to ASP.NET MVC 5 while preserving the original service/domain logic.
+This project started as a WebForms technical challenge and has now been fully migrated to ASP.NET MVC 5 while preserving the original service/domain logic.
 
 ## Current Architecture
 
 - UI: ASP.NET MVC 5 (`Tournament`, `Examples`, `About`)
-- Legacy UI: WebForms pages still present for compatibility/redirect cutover
+- UI runtime: MVC-only controllers and Razor views
 - Business logic: `Services` project (`TournamentProcess`, entities)
 - Data: Entity Framework 5 with LocalDB (`Scores`)
 
@@ -21,7 +21,9 @@ This project started as a WebForms technical challenge and has been incrementall
 
 1. Open `RPS_Challenge.sln` in Visual Studio.
 2. Ensure .NET Framework 4.8 developer tools are installed.
-3. Restore NuGet packages (if Visual Studio does not auto-restore).
+3. Restore NuGet packages:
+   - Visual Studio restore, or
+   - `MSBuild /t:Restore /p:RestorePackagesConfig=true`
 4. Run the `RPS_Challenge` web project with IIS Express.
 
 ## Build
@@ -29,7 +31,7 @@ This project started as a WebForms technical challenge and has been incrementall
 From repository root:
 
 ```powershell
-"C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\MSBuild.exe" .\RPS_Challenge.sln /t:Build /p:Configuration=Debug
+"C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\MSBuild.exe" .\RPS_Challenge.sln /t:Restore,Build /p:RestorePackagesConfig=true /p:Configuration=Debug
 ```
 
 ## Notes

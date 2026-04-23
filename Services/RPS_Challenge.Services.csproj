@@ -7,8 +7,8 @@
     <ProjectGuid>{58B205EA-8FCF-4793-82ED-6ECEBADC7C72}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RPS_Challenge.Services</RootNamespace>
-    <AssemblyName>RPS_Challenge.Services</AssemblyName>
+    <RootNamespace>RPS_Challenge.Core</RootNamespace>
+    <AssemblyName>RPS_Challenge.Core</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

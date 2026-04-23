@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using RPS_Challenge.Services.Entities;
+using RPS_Challenge.Core.Entities;
 
-namespace RPS_Challenge.Services.Entities {
+namespace RPS_Challenge.Core.Entities {
     /// <summary>
     /// Representa un juego o Round.
     /// </summary>
@@ -21,9 +21,9 @@ namespace RPS_Challenge.Services.Entities {
 
         #region Round
         /// <summary>
-        /// Crea e inicializa una instancia del tipo <see cref="RPS_Challenge.Services.Entities.Round"/>
+        /// Crea e inicializa una instancia del tipo <see cref="RPS_Challenge.Core.Entities.Round"/>
         /// </summary>
-        /// <param name="playerList">Lista de objetos de tipo <see cref=" RPS_Challenge.Services.Entities.Player"/></param>
+        /// <param name="playerList">Lista de objetos de tipo <see cref=" RPS_Challenge.Core.Entities.Player"/></param>
         public Round(List<Player> playerList) {
             this.Players = playerList;
         }

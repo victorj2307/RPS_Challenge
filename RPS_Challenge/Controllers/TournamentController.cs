@@ -7,8 +7,8 @@ using System.Web.Mvc;
 
 using RPS_Challenge.Mappers;
 using RPS_Challenge.Services;
-using RPS_Challenge.Services.Entities;
-using RPS_Challenge.Services.Processes;
+using RPS_Challenge.Core.Entities;
+using RPS_Challenge.Core.Processes;
 using RPS_Challenge.ViewModels;
 
 namespace RPS_Challenge.Controllers {

@@ -51,6 +51,7 @@ Icon
 **/[Rr]elease/
 
 # NuGet generated artifacts
+packages/
 packages/_tmp/
 *.nupkg
 

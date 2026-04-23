@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using RPS_Challenge.Services.Entities;
+using RPS_Challenge.Core.Entities;
 using RPS_Challenge.ViewModels;
 
 namespace RPS_Challenge.Mappers {

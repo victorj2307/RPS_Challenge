@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace RPS_Challenge.Services.Entities {
+namespace RPS_Challenge.Core.Entities {
     public class TournamentResult {
         public string Message { get; set; }
         public string WinnerName { get; set; }

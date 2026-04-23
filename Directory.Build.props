@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <!-- Ensure packages.config dependencies restore with MSBuild restore -->
+    <RestorePackagesConfig>true</RestorePackagesConfig>
+  </PropertyGroup>
+</Project>

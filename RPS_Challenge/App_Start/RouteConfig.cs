@@ -13,6 +13,18 @@ namespace RPS_Challenge
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "LegacyDefaultPage",
+                url: "Default.aspx",
+                defaults: new { controller = "Tournament", action = "Index" }
+            );
+
+            routes.MapRoute(
+                name: "LegacyAboutPage",
+                url: "About.aspx",
+                defaults: new { controller = "About", action = "Index" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Tournament", action = "Index", id = UrlParameter.Optional }

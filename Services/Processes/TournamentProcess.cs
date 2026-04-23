@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Web.Script.Serialization;
 
-using RPS_Challenge.Services.Entities;
+using RPS_Challenge.Core.Entities;
 
-namespace RPS_Challenge.Services.Processes {
+namespace RPS_Challenge.Core.Processes {
     /// <summary>
     /// Permite procesar un Torneo definido a partir de un archivo JSON.
     /// </summary>

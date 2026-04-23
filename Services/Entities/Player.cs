@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace RPS_Challenge.Services.Entities {
+namespace RPS_Challenge.Core.Entities {
     /// <summary>
     /// Representa un Jugador.
     /// </summary>
@@ -20,7 +20,7 @@ namespace RPS_Challenge.Services.Entities {
 
         #region Player
         /// <summary>
-        /// Crea e inicializa una instancia del tipo <see cref="RPS_Challenge.Services.Entities.Player"/>
+        /// Crea e inicializa una instancia del tipo <see cref="RPS_Challenge.Core.Entities.Player"/>
         /// </summary>
         /// <param name="name">Nombre del Jugador.</param>
         /// <param name="strategy">Estrategia del Jugador (R, P, S)</param>
