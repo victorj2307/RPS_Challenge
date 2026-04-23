@@ -40,8 +40,6 @@ Base path: `/api/v1`
 - `POST /api/v1/scoreboard/championship` -> apply **winner +3** and optional **runner-up +1** in a single database transaction. Body: `{ "winnerName": "...", "secondPlaceName": "..." }` (`secondPlaceName` optional). Returns **400** if `secondPlaceName` equals `winnerName` (case-insensitive).
 - `DELETE /api/v1/scoreboard` -> reset all scoreboard data
 
-**Breaking change:** `POST /api/v1/scoreboard/winner` was removed; use `championship` instead.
-
 ### Example Requests
 
 ```http
