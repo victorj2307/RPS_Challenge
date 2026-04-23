@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPS.Challenge.Web", "src\RP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPS.Challenge.Core", "src\RPS.Challenge.Core\RPS.Challenge.Core.csproj", "{58B205EA-8FCF-4793-82ED-6ECEBADC7C72}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPS.Challenge.Web.API", "src\RPS.Challenge.Web.API\RPS.Challenge.Web.API.csproj", "{A0B812DE-86BE-48D1-85A8-6AEAF2580C6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPS.Challenge.Core.Tests", "tests\RPS.Challenge.Core.Tests\RPS.Challenge.Core.Tests.csproj", "{F3E2D1C0-B9A8-7654-3210-FEDCBA987654}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{58B205EA-8FCF-4793-82ED-6ECEBADC7C72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58B205EA-8FCF-4793-82ED-6ECEBADC7C72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58B205EA-8FCF-4793-82ED-6ECEBADC7C72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0B812DE-86BE-48D1-85A8-6AEAF2580C6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0B812DE-86BE-48D1-85A8-6AEAF2580C6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0B812DE-86BE-48D1-85A8-6AEAF2580C6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0B812DE-86BE-48D1-85A8-6AEAF2580C6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3E2D1C0-B9A8-7654-3210-FEDCBA987654}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3E2D1C0-B9A8-7654-3210-FEDCBA987654}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3E2D1C0-B9A8-7654-3210-FEDCBA987654}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3E2D1C0-B9A8-7654-3210-FEDCBA987654}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

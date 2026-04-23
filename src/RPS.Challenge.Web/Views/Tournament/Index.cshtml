@@ -100,11 +100,35 @@
                         </div>
                         <div class="round-champion-center">
                             <span class="round-champion-name">@Model.ChampionName</span>
+                            @if (Model.ChampionPointsGained.HasValue) {
+                                <span class="round-champion-points" title="Scoreboard points from this tournament">+@Model.ChampionPointsGained.Value pts</span>
+                            }
                         </div>
                         <div class="round-champion-right">
                             <span class="round-champion-trophy" aria-hidden="true"><i class="fa-solid fa-trophy"></i></span>
                         </div>
                     </div>
+                    @if (Model.ShowRunnerUpSummary) {
+                        <div class="runner-up-summary-line">
+                            <div class="round-champion-left">
+                                <div class="round-champion-title">2nd place</div>
+                                <div class="round-champion-strategy">
+                                    Strategy:
+                                    @Model.RunnerUpStrategy
+                                    <span class="round-strategy-icon" aria-hidden="true"><i class="@Model.RunnerUpStrategyIcon"></i></span>
+                                </div>
+                            </div>
+                            <div class="round-champion-center">
+                                <span class="round-champion-name">@Model.RunnerUpName</span>
+                                @if (Model.RunnerUpPointsGained.HasValue) {
+                                    <span class="round-champion-points" title="Scoreboard points from this tournament">+@Model.RunnerUpPointsGained.Value pts</span>
+                                }
+                            </div>
+                            <div class="round-champion-right">
+                                <span class="round-champion-trophy" aria-hidden="true"><i class="fa-solid fa-medal"></i></span>
+                            </div>
+                        </div>
+                    }
                 </div>
             }
         </section>

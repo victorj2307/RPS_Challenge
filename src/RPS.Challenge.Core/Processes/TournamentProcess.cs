@@ -5,6 +5,7 @@ using System.Text;
 using System.Web.Script.Serialization;
 
 using RPS.Challenge.Core.Entities;
+using RPS.Challenge.Core.Validation;
 
 namespace RPS.Challenge.Core.Processes {
     /// <summary>
@@ -34,6 +35,8 @@ namespace RPS.Challenge.Core.Processes {
             TournamentResult tournamentResult = new TournamentResult {
                 Message = string.Empty,
                 WinnerName = string.Empty,
+                SecondPlaceName = string.Empty,
+                SecondPlaceStrategy = string.Empty,
                 Rounds = new List<RoundResult>(),
                 IsSuccess = false
             };
@@ -85,6 +88,13 @@ namespace RPS.Challenge.Core.Processes {
                     tournamentResult.Message = string.Format("Winner: {0}, {1}", tournamentPlayers[0].Name, GetStrategyDisplayName(tournamentPlayers[0].Strategy));
                     tournamentResult.WinnerName = tournamentPlayers[0].Name;
                     tournamentResult.IsSuccess = true;
+
+                    string runnerUpName;
+                    string runnerUpStrategy;
+                    if (TournamentRunnerUpResolver.TryGetRunnerUp(tournamentResult, out runnerUpName, out runnerUpStrategy)) {
+                        tournamentResult.SecondPlaceName = runnerUpName;
+                        tournamentResult.SecondPlaceStrategy = runnerUpStrategy;
+                    }
                 }
             }
             catch (Exception e) {
@@ -94,8 +104,28 @@ namespace RPS.Challenge.Core.Processes {
             return tournamentResult;
         }
 
+        /// <summary>
+        /// Counts leaf players in tournament JSON (same shape as <see cref="ProcessTournamentDetailed"/>) without running matches.
+        /// </summary>
+        public static bool TryCountPlayers(byte[] fileBytes, out int playerCount) {
+            playerCount = 0;
+            try {
+                List<Player> players = GetPlayersFromJson(fileBytes);
+                playerCount = players.Count;
+                return playerCount > 0;
+            }
+            catch {
+                return false;
+            }
+        }
+
         private static List<Player> GetPlayersFromJson(byte[] fileBytes) {
-            string jsonContent = Encoding.UTF8.GetString(fileBytes);
+            string validationError;
+            string jsonContent;
+            if (!TournamentPayloadValidator.TryValidateSingleChampionshipJson(fileBytes, out jsonContent, out validationError)) {
+                throw new Exception(validationError);
+            }
+
             object deserializedContent = null;
 
             try {

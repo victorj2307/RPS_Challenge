@@ -2,9 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Web;
-using System.Web.Script.Serialization;
 
 using RPS.Challenge.Web.ViewModels;
 
@@ -34,10 +32,22 @@ namespace RPS.Challenge.Web.Services {
         }
 
         private static TournamentFileDescriptionViewModel GetTournamentFileDescription(string filePath) {
-            int playerCount;
-            if (!TryGetPlayerCountFromFile(filePath, out playerCount)) {
+            byte[] fileBytes;
+            try {
+                fileBytes = File.ReadAllBytes(filePath);
+            }
+            catch {
                 return new TournamentFileDescriptionViewModel {
-                    Message = "Invalid tournament definition file.",
+                    Message = "Could not read tournament definition file.",
+                    CssClass = "file-description file-description-invalid"
+                };
+            }
+
+            int playerCount;
+            string apiError;
+            if (!RpsApiClient.TryGetTournamentPlayerCount(fileBytes, out playerCount, out apiError)) {
+                return new TournamentFileDescriptionViewModel {
+                    Message = string.IsNullOrWhiteSpace(apiError) ? "Invalid tournament definition file." : apiError,
                     CssClass = "file-description file-description-invalid"
                 };
             }
@@ -47,39 +57,5 @@ namespace RPS.Challenge.Web.Services {
                 CssClass = "file-description file-description-valid"
             };
         }
-
-        private static bool TryGetPlayerCountFromFile(string filePath, out int playerCount) {
-            playerCount = 0;
-
-            try {
-                string jsonContent = File.ReadAllText(filePath, Encoding.UTF8);
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-                object parsedNode = serializer.DeserializeObject(jsonContent);
-                playerCount = CountPlayers(parsedNode);
-                return playerCount > 0;
-            }
-            catch {
-                return false;
-            }
-        }
-
-        private static int CountPlayers(object node) {
-            object[] nodeArray = node as object[];
-            if (nodeArray == null) {
-                throw new InvalidOperationException("Invalid tournament node.");
-            }
-
-            if (nodeArray.Length == 2 && nodeArray[0] is string && nodeArray[1] is string) {
-                return 1;
-            }
-
-            int count = 0;
-            foreach (object childNode in nodeArray) {
-                count += CountPlayers(childNode);
-            }
-
-            return count;
-        }
     }
 }
-

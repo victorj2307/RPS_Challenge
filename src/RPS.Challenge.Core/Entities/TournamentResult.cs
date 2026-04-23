@@ -4,6 +4,8 @@ namespace RPS.Challenge.Core.Entities {
     public class TournamentResult {
         public string Message { get; set; }
         public string WinnerName { get; set; }
+        public string SecondPlaceName { get; set; }
+        public string SecondPlaceStrategy { get; set; }
         public List<RoundResult> Rounds { get; set; }
         public bool IsSuccess { get; set; }
     }

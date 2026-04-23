@@ -8,7 +8,8 @@ using System.Web.Mvc;
 using RPS.Challenge.Web.Mappers;
 using RPS.Challenge.Web.Services;
 using RPS.Challenge.Core.Entities;
-using RPS.Challenge.Core.Processes;
+using RPS.Challenge.Core.Scoring;
+using RPS.Challenge.Core.Validation;
 using RPS.Challenge.Web.ViewModels;
 
 namespace RPS.Challenge.Web.Controllers {
@@ -50,13 +51,34 @@ namespace RPS.Challenge.Web.Controllers {
                 fileBytes = stream.ToArray();
             }
 
-            TournamentResult tournamentResult = TournamentProcess.ProcessTournamentDetailed(fileBytes);
+            string validationError;
+            if (!TournamentPayloadValidator.TryValidateSingleChampionshipJson(fileBytes, out validationError)) {
+                viewModel.ResultMessage = validationError;
+                viewModel.ResultMessageCssClass = "result-message result-error";
+                return View("Index", viewModel);
+            }
+
+            string apiError;
+            TournamentResult tournamentResult;
+            if (!RpsApiClient.TryPlayTournament(fileBytes, out tournamentResult, out apiError)) {
+                viewModel.ResultMessage = apiError;
+                viewModel.ResultMessageCssClass = "result-message result-error";
+                return View("Index", viewModel);
+            }
+
             if (tournamentResult.IsSuccess) {
-                viewModel.ResultMessage = "Tournament completed. Champion is shown below.";
+                viewModel.ResultMessage = "Tournament completed. Results are shown below.";
                 viewModel.ResultMessageCssClass = "result-message result-info";
 
-                ScoreboardService.InsertWinnerScore(tournamentResult.WinnerName);
-                viewModel.Scoreboard = ScoreboardService.GetTopScores(10);
+                string scoreError;
+                string secondForScore = string.IsNullOrWhiteSpace(tournamentResult.SecondPlaceName) ? null : tournamentResult.SecondPlaceName.Trim();
+                bool scoresApplied = RpsApiClient.TryApplyChampionshipScores(tournamentResult.WinnerName, secondForScore, out scoreError);
+                if (!scoresApplied) {
+                    viewModel.ResultMessage = "Tournament completed, but the scoreboard could not be updated: " + scoreError;
+                    viewModel.ResultMessageCssClass = "result-message result-error";
+                }
+
+                viewModel.Scoreboard = RpsApiClient.GetTopScores(10);
 
                 viewModel.RoundResults = TournamentResultViewModelMapper.MapRounds(tournamentResult);
                 MatchResultViewModel finalMatch = viewModel.RoundResults.SelectMany(round => round.Matches).LastOrDefault();
@@ -65,6 +87,19 @@ namespace RPS.Challenge.Web.Controllers {
                     viewModel.ChampionName = finalMatch.WinnerName;
                     viewModel.ChampionStrategy = finalMatch.WinnerStrategy;
                     viewModel.ChampionStrategyIcon = this.GetStrategyIconClass(finalMatch.WinnerStrategy);
+                    if (scoresApplied) {
+                        viewModel.ChampionPointsGained = ChampionshipPoints.Winner;
+                    }
+                }
+
+                if (!string.IsNullOrWhiteSpace(tournamentResult.SecondPlaceName)) {
+                    viewModel.ShowRunnerUpSummary = true;
+                    viewModel.RunnerUpName = tournamentResult.SecondPlaceName.Trim();
+                    viewModel.RunnerUpStrategy = string.IsNullOrEmpty(tournamentResult.SecondPlaceStrategy) ? string.Empty : tournamentResult.SecondPlaceStrategy.Trim();
+                    viewModel.RunnerUpStrategyIcon = this.GetStrategyIconClass(viewModel.RunnerUpStrategy);
+                    if (scoresApplied) {
+                        viewModel.RunnerUpPointsGained = ChampionshipPoints.SecondPlace;
+                    }
                 }
             }
             else {
@@ -78,9 +113,16 @@ namespace RPS.Challenge.Web.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ResetScoreboard() {
-            ScoreboardService.ResetScoreboard();
-            TempData["ResultMessage"] = "Scoreboard has been reset.";
-            TempData["ResultMessageCssClass"] = "result-message result-info";
+            string resetError;
+            if (!RpsApiClient.TryResetScoreboard(out resetError)) {
+                TempData["ResultMessage"] = resetError;
+                TempData["ResultMessageCssClass"] = "result-message result-error";
+            }
+            else {
+                TempData["ResultMessage"] = "Scoreboard has been reset.";
+                TempData["ResultMessageCssClass"] = "result-message result-info";
+            }
+
             return RedirectToAction("Index");
         }
 
@@ -88,12 +130,18 @@ namespace RPS.Challenge.Web.Controllers {
             return new TournamentPageViewModel {
                 ResultMessage = string.Empty,
                 ResultMessageCssClass = "result-message result-info",
-                Scoreboard = ScoreboardService.GetTopScores(10),
+                Scoreboard = RpsApiClient.GetTopScores(10),
                 RoundResults = new List<RoundResultViewModel>(),
                 ShowChampionSummary = false,
                 ChampionName = string.Empty,
                 ChampionStrategy = string.Empty,
-                ChampionStrategyIcon = string.Empty
+                ChampionStrategyIcon = string.Empty,
+                ShowRunnerUpSummary = false,
+                RunnerUpName = string.Empty,
+                RunnerUpStrategy = string.Empty,
+                RunnerUpStrategyIcon = string.Empty,
+                ChampionPointsGained = null,
+                RunnerUpPointsGained = null
             };
         }
 
@@ -103,6 +151,12 @@ namespace RPS.Challenge.Web.Controllers {
             viewModel.ChampionName = string.Empty;
             viewModel.ChampionStrategy = string.Empty;
             viewModel.ChampionStrategyIcon = string.Empty;
+            viewModel.ShowRunnerUpSummary = false;
+            viewModel.RunnerUpName = string.Empty;
+            viewModel.RunnerUpStrategy = string.Empty;
+            viewModel.RunnerUpStrategyIcon = string.Empty;
+            viewModel.ChampionPointsGained = null;
+            viewModel.RunnerUpPointsGained = null;
         }
 
         private string GetStrategyIconClass(string strategy) {

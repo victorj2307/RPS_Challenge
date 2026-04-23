@@ -1056,6 +1056,10 @@ a:focus-visible {
     font-size: 0.92em;
 }
 
+.round-match-loser-line {
+    text-align: center;
+}
+
 .round-match-winner {
     font-weight: 700;
     color: var(--game-success);
@@ -1091,6 +1095,21 @@ a:focus-visible {
     box-shadow: 0 8px 20px rgba(26, 66, 51, 0.25);
 }
 
+.runner-up-summary-line {
+    margin-top: 12px;
+    min-height: 96px;
+    padding: 12px 14px;
+    display: grid;
+    grid-template-columns: minmax(190px, 1fr) minmax(180px, auto) 64px;
+    gap: 12px;
+    align-items: center;
+    border: 1px solid rgba(110, 231, 255, 0.45);
+    border-radius: 10px;
+    background: linear-gradient(110deg, rgba(28, 52, 82, 0.5), rgba(25, 40, 82, 0.62));
+    color: #f4f8ff;
+    box-shadow: 0 8px 20px rgba(26, 40, 66, 0.22);
+}
+
 .round-champion-left {
     min-width: 0;
 }
@@ -1114,8 +1133,23 @@ a:focus-visible {
 
 .round-champion-center {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 6px;
+    text-align: center;
+}
+
+.round-champion-points {
+    display: block;
+    font-size: 0.88em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: rgba(201, 255, 223, 0.88);
+}
+
+.runner-up-summary-line .round-champion-points {
+    color: rgba(184, 220, 255, 0.9);
 }
 
 .round-champion-right {
@@ -1147,7 +1181,8 @@ a:focus-visible {
 }
 
 @media only screen and (max-width: 850px) {
-    .round-champion-line {
+    .round-champion-line,
+    .runner-up-summary-line {
         min-height: 0;
         grid-template-columns: 1fr;
         gap: 10px;
@@ -1158,7 +1193,16 @@ a:focus-visible {
         justify-content: center;
     }
 
+    .runner-up-summary-line .round-champion-center,
+    .runner-up-summary-line .round-champion-right {
+        justify-content: center;
+    }
+
     .round-champion-left {
+        text-align: center;
+    }
+
+    .runner-up-summary-line .round-champion-left {
         text-align: center;
     }
 
