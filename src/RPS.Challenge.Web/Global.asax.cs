@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Routing;
+using RPS.Challenge.Web;
+
+namespace RPS.Challenge.Web {
+    public class Global : HttpApplication {
+        void Application_Start(object sender, EventArgs e) {
+            // Code that runs on application startup
+            AreaRegistration.RegisterAllAreas();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+        }
+
+        void Application_End(object sender, EventArgs e) {
+            //  Code that runs on application shutdown
+
+        }
+
+        void Application_Error(object sender, EventArgs e) {
+            // Code that runs when an unhandled error occurs
+
+        }
+    }
+}
+

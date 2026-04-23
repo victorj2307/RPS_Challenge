@@ -1,0 +1,4 @@
+[
+[ ["Federico", "P"], ["Jose", "S"] ],
+[ ["Hernan", "R"], ["Beatriz", "S"] ]
+]

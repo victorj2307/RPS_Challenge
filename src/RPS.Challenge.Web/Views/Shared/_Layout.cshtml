@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="@Url.Content("~/favicon.ico")" rel="shortcut icon" type="image/x-icon" />
+    <script src="@Url.Content("~/Scripts/modernizr-2.6.2.js")"></script>
+    @RenderSection("HeadContent", required: false)
+</head>
+<body class="app-body">
+    @{
+        var currentController = (ViewContext.RouteData.Values["controller"] as string ?? string.Empty);
+    }
+    <div class="app-shell">
+        <header class="app-header">
+            <div class="content-wrapper app-header-inner">
+                <div class="app-brand">
+                    <p class="site-title">Rock Paper Scissors Arena</p>
+                    <span class="site-tagline">Tournament dashboard</span>
+                </div>
+                <nav class="app-nav">
+                    <ul id="menu">
+                        <li><a class="@(string.Equals(currentController, "Tournament", StringComparison.OrdinalIgnoreCase) ? "active" : string.Empty)" href="@Url.Action("Index", "Tournament")">Play</a></li>
+                        <li><a class="@(string.Equals(currentController, "Examples", StringComparison.OrdinalIgnoreCase) ? "active" : string.Empty)" href="@Url.Action("Index", "Examples")">Examples</a></li>
+                        <li><a class="@(string.Equals(currentController, "About", StringComparison.OrdinalIgnoreCase) ? "active" : string.Empty)" href="@Url.Action("Index", "About")">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div id="body">
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer class="app-footer">
+            <div class="content-wrapper app-footer-inner">
+                <p>&copy; @DateTime.Now.Year - Victor Viquez Benavides</p>
+            </div>
+        </footer>
+    </div>
+    <script src="@Url.Content("~/Scripts/jquery-3.7.1.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.13.2.min.js")"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -2,19 +2,29 @@
 
 Rock-Paper-Scissors tournament web app built on .NET Framework 4.8.
 
-This project started as a WebForms technical challenge and has now been fully migrated to ASP.NET MVC 5 while preserving the original service/domain logic.
+This repository started as a WebForms technical test and was modernized to an ASP.NET MVC 5 application with a cleaner, layered structure.
 
-## Current Architecture
+## Solution Structure
 
-- UI: ASP.NET MVC 5 (`Tournament`, `Examples`, `About`)
-- UI runtime: MVC-only controllers and Razor views
-- Business logic: `Services` project (`TournamentProcess`, entities)
-- Data: Entity Framework 5 with LocalDB (`Scores`)
+- `src/RPS.Challenge.Web`: MVC web application (controllers, views, UI assets)
+- `src/RPS.Challenge.Core`: Tournament domain logic (entities and processes)
+- `RPS_Challenge.sln`: Solution entry point
+
+## Technology Stack
+
+- ASP.NET MVC 5
+- .NET Framework 4.8
+- C# + LINQ
+- Entity Framework 5
+- SQL Server LocalDB
+- Razor views
+- jQuery 3.7.1 / jQuery UI 1.13.2
+- Custom CSS UI
 
 ## Main Routes
 
 - `/Tournament` -> main tournament flow
-- `/Examples` -> tournament example files
+- `/Examples` -> sample tournament files
 - `/About` -> project and author information
 
 ## Local Setup
@@ -24,18 +34,19 @@ This project started as a WebForms technical challenge and has now been fully mi
 3. Restore NuGet packages:
    - Visual Studio restore, or
    - `MSBuild /t:Restore /p:RestorePackagesConfig=true`
-4. Run the `RPS_Challenge` web project with IIS Express.
+4. Run `src/RPS.Challenge.Web` with IIS Express.
 
 ## Build
 
 From repository root:
 
 ```powershell
-"C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\MSBuild.exe" .\RPS_Challenge.sln /t:Restore,Build /p:RestorePackagesConfig=true /p:Configuration=Debug
+& "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\MSBuild.exe" .\RPS_Challenge.sln /t:Restore,Build /p:RestorePackagesConfig=true /p:Configuration=Debug
 ```
 
 ## Notes
 
 - Tournament uploads accept `.txt` and `.json` files with the expected JSON bracket structure.
-- Scoreboard data uses LocalDB and is not intended for production deployment.
-- Repository ignore rules exclude local build outputs and local database files.
+- Scoreboard data is stored in LocalDB using the `RPSChallengeScores` catalog.
+- This project is intended as a modernized technical challenge/portfolio piece, not a production deployment.
+

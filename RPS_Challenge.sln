@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPS_Challenge", "RPS_Challenge\RPS_Challenge.csproj", "{9552FD61-4AAF-4B77-B9E3-BC3F2FF6FD3A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPS.Challenge.Web", "src\RPS.Challenge.Web\RPS.Challenge.Web.csproj", "{9552FD61-4AAF-4B77-B9E3-BC3F2FF6FD3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPS_Challenge.Core", "Services\RPS_Challenge.Services.csproj", "{58B205EA-8FCF-4793-82ED-6ECEBADC7C72}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPS.Challenge.Core", "src\RPS.Challenge.Core\RPS.Challenge.Core.csproj", "{58B205EA-8FCF-4793-82ED-6ECEBADC7C72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,3 +26,4 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
+
