@@ -9,7 +9,9 @@ namespace RPS_Challenge {
     public partial class About : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (this.Request.Path.EndsWith("About.aspx", StringComparison.OrdinalIgnoreCase)) {
+                this.Response.Redirect("~/About", true);
+            }
         }
     }
 }

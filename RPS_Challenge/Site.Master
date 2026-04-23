@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <title><%: Page.Title %></title>
     <link href="~/Content/Site.css" rel="stylesheet" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <asp:PlaceHolder runat="server">        
         <script src="<%: ResolveUrl("~/Scripts/modernizr-2.6.2.js") %>"></script>
@@ -29,7 +30,7 @@
             </div>
             <nav class="app-nav">
                 <ul id="menu">
-                    <li><a runat="server" href="~/">Play</a></li>
+                    <li><a runat="server" href="~/Tournament">Play</a></li>
                     <li><a runat="server" href="~/Examples">Examples</a></li>
                     <li><a runat="server" href="~/About">About</a></li>
                 </ul>

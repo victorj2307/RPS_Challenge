@@ -1274,6 +1274,13 @@ a:focus-visible {
     font-weight: 700;
 }
 
+.score-rank-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 6px;
+}
+
 .score-points {
     text-align: right;
     font-weight: 700;
@@ -1297,19 +1304,16 @@ a:focus-visible {
     background: linear-gradient(90deg, rgba(208, 156, 102, 0.18), rgba(20, 29, 52, 0.9));
 }
 
-.score-row-first .score-rank::before {
-    content: "🥇";
-    margin-right: 4px;
+.score-row-first .score-rank-icon {
+    color: #ffd166;
 }
 
-.score-row-second .score-rank::before {
-    content: "🥈";
-    margin-right: 4px;
+.score-row-second .score-rank-icon {
+    color: #d8e2f4;
 }
 
-.score-row-third .score-rank::before {
-    content: "🥉";
-    margin-right: 4px;
+.score-row-third .score-rank-icon {
+    color: #d6a06c;
 }
 
 input[type="submit"]:disabled,

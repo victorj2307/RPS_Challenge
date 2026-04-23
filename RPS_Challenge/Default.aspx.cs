@@ -14,6 +14,11 @@ namespace RPS_Challenge {
         private const string ResultWinnerPrefix = "Winner:";
 
         protected void Page_Load(object sender, EventArgs e) {
+            if (this.Request.Path.EndsWith("Default.aspx", StringComparison.OrdinalIgnoreCase)) {
+                this.Response.Redirect("~/Tournament", true);
+                return;
+            }
+
             if (this.Form != null) {
                 this.Form.Attributes["onsubmit"] = "return markFormSubmitting();";
             }
@@ -201,6 +206,15 @@ namespace RPS_Challenge {
             else {
                 e.Row.CssClass = "score-row";
             }
+
+            if (rowData.Rank <= 3 && e.Row.Cells.Count > 0) {
+                string rankIconClass = this.GetRankIconClass(rowData.Rank);
+                e.Row.Cells[0].Text = string.Format(
+                    "<span class='score-rank-icon' aria-hidden='true'><i class='{0}'></i></span>{1}",
+                    rankIconClass,
+                    rowData.Rank
+                );
+            }
         }
 
         private void SetResultMessage(string message) {
@@ -238,6 +252,19 @@ namespace RPS_Challenge {
                     return "✂️";
                 default:
                     return "🎮";
+            }
+        }
+
+        private string GetRankIconClass(int rank) {
+            switch (rank) {
+                case 1:
+                    return "fa-solid fa-medal";
+                case 2:
+                    return "fa-solid fa-award";
+                case 3:
+                    return "fa-solid fa-certificate";
+                default:
+                    return string.Empty;
             }
         }
     }

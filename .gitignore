@@ -26,7 +26,7 @@ $RECYCLE.BIN/
 .LSOverride
 
 # Icon must ends with two \r.
-Icon
+Icon
 
 # Thumbnails
 ._*
@@ -34,3 +34,37 @@ Icon
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
+
+# =========================
+# Visual Studio / .NET
+# =========================
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build outputs
+**/[Bb]in/
+**/[Oo]bj/
+**/[Dd]ebug/
+**/[Rr]elease/
+
+# NuGet generated artifacts
+packages/_tmp/
+*.nupkg
+
+# Logs and temporary files
+*.log
+*.tmp
+*.cache
+*~
+
+# Local database/runtime artifacts
+**/App_Data/*.mdf
+**/App_Data/*.ldf
+
+# Rider/ReSharper
+.idea/
+_ReSharper*/
+*.DotSettings.user
