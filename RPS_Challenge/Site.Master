@@ -13,27 +13,27 @@
     <meta name="viewport" content="width=device-width" />
     <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
 </head>
-<body>
-    <form runat="server">
+<body class="app-body">
+    <form runat="server" class="app-shell">
     <asp:ScriptManager runat="server">
         <Scripts>
             <asp:ScriptReference Name="jquery" />
             <asp:ScriptReference Name="jquery.ui.combined" />
         </Scripts>
     </asp:ScriptManager>
-    <header>
-        <div class="content-wrapper">
-            <div class="float-left">
-                <p class="site-title">Rock Paper Scissor Challenge</p>
+    <header class="app-header">
+        <div class="content-wrapper app-header-inner">
+            <div class="app-brand">
+                <p class="site-title">Rock Paper Scissors Arena</p>
+                <span class="site-tagline">Tournament dashboard</span>
             </div>
-            <div class="float-right">
-                <nav>
-                    <ul id="menu">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/About">About Víctor</a></li>
-                    </ul>
-                </nav>
-            </div>
+            <nav class="app-nav">
+                <ul id="menu">
+                    <li><a runat="server" href="~/">Play</a></li>
+                    <li><a runat="server" href="~/Examples">Examples</a></li>
+                    <li><a runat="server" href="~/About">About</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
     <div id="body">
@@ -42,11 +42,9 @@
             <asp:ContentPlaceHolder runat="server" ID="MainContent" />
         </section>
     </div>
-    <footer>
-        <div class="content-wrapper">
-            <div class="float-left">
-                <p>&copy; <%: DateTime.Now.Year %> - Víctor Víquez Benavides</p>
-            </div>
+    <footer class="app-footer">
+        <div class="content-wrapper app-footer-inner">
+            <p>&copy; <%: DateTime.Now.Year %> - Victor Viquez Benavides</p>
         </div>
     </footer>
     </form>

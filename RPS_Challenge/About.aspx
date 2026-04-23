@@ -1,23 +1,35 @@
 ﻿<%@ Page Title="About Us" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="About.aspx.cs" Inherits="EntityFrameworkTest.About" %>
+    CodeBehind="About.aspx.cs" Inherits="RPS_Challenge.About" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h2>About Víctor Víquez Benavides
-    </h2>
-    <p>
-        I&#39;m a Systems Engineer, graduated from Universidad Latina of Costa Rica in 2006. </p>
-    <p>
-        I have experience in the development of web applications based on Microsoft tecnologies such as ASP.net and C#.
-    </p>
-    <p>
-        In this Challenge I used the following technologies: ASP.net, Entity Framework to interact with the database, Linq to make instructions for the insert, update, delete and select statements.
-    </p>
-    <p>
-        The reason why I used those technologies is because I&#39;ve been using ASP.net since the last 7 years and It results easy to me, I introduced Entity Framework and Linq in this application with the purpuse of explore new environments.
-    </p>
-    <p>
-        In this solution I implemented an application that has the ability to resolve the game Rock-Paper-Scissor, not only in a unique turn, but what I implemented a multi rounds validation, assuming the source of data of the game is a file with bracketed array format.
-    </p>
+    <section class="page-card">
+        <h2>About</h2>
+        <h3>About this project</h3>
+        <p>
+            This solution resolves Rock-Paper-Scissors tournaments, including multi-round bracket validation based on
+            tournament definition files.
+        </p>
+        <p>
+            In this challenge I used ASP.NET, Entity Framework, and LINQ to build tournament processing logic,
+            update score data, and keep the application structure simple and clear.
+        </p>
+        <p>
+            The application has been modernized in UI/UX to improve readability and user experience while preserving
+            the original challenge intent.
+        </p>
+
+        <h3>About the author</h3>
+        <p>
+            I am Victor Viquez Benavides, a Systems Engineer graduated from Universidad Latina of Costa Rica in 2006.
+        </p>
+        <p>
+            I have experience in developing web applications based on Microsoft technologies such as ASP.NET and C#.
+        </p>
+        <p>
+            I chose these technologies because I have worked with ASP.NET for many years, and this challenge
+            was also a way to continue learning and improving with newer practices.
+        </p>
+    </section>
 </asp:Content>

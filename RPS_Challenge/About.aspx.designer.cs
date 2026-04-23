@@ -7,8 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EntityFrameworkTest
-{
+namespace RPS_Challenge {
 
 
     public partial class About

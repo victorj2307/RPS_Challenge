@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RPS_Challenge</RootNamespace>
     <AssemblyName>RPS_Challenge</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -180,6 +180,7 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Default.aspx" />
+    <Content Include="Examples.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
@@ -222,12 +223,21 @@
     </Compile>
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Mappers\ScoreboardViewModelMapper.cs" />
+    <Compile Include="Mappers\TournamentResultViewModelMapper.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Examples.aspx.cs">
+      <DependentUpon>Examples.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Examples.aspx.designer.cs">
+      <DependentUpon>Examples.aspx</DependentUpon>
     </Compile>
     <Compile Include="ExampleFilesDownload.ashx.cs">
       <DependentUpon>ExampleFilesDownload.ashx</DependentUpon>
@@ -255,6 +265,10 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="Services\TournamentExamplesService.cs" />
+    <Compile Include="ViewModels\RoundResultViewModels.cs" />
+    <Compile Include="ViewModels\ScoreRowViewModel.cs" />
+    <Compile Include="ViewModels\TournamentFileViewModels.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -4,19 +4,33 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
     <title></title>
     <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
 </head>
-<body>
-    <form id="form1" runat="server">
+<body class="app-body">
+    <form id="form1" runat="server" class="app-shell">
     <div>
-        <h1>Mobile Master Page</h1>
+        <header class="app-header">
+            <div class="content-wrapper app-header-inner">
+                <div class="app-brand">
+                    <p class="site-title">RPS Arena</p>
+                    <span class="site-tagline">Mobile view</span>
+                </div>
+            </div>
+        </header>
         <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
         <section class="content-wrapper main-content clear-fix">
             <asp:ContentPlaceHolder runat="server" ID="MainContent" />
         </section>
         <friendlyUrls:ViewSwitcher runat="server" />
+        <footer class="app-footer">
+            <div class="content-wrapper app-footer-inner">
+                <p>&copy; <%: DateTime.Now.Year %> - Victor Viquez Benavides</p>
+            </div>
+        </footer>
     </div>
     </form>
 </body>

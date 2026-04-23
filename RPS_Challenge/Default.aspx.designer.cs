@@ -49,6 +49,15 @@ namespace RPS_Challenge {
         protected global::System.Web.UI.WebControls.Button btnPlay;
         
         /// <summary>
+        /// pnlResult control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlResult;
+        
+        /// <summary>
         /// lblResult control.
         /// </summary>
         /// <remarks>
@@ -58,13 +67,67 @@ namespace RPS_Challenge {
         protected global::System.Web.UI.WebControls.Label lblResult;
         
         /// <summary>
-        /// btnSeeScores control.
+        /// roundResultsSection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSeeScores;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl roundResultsSection;
+        
+        /// <summary>
+        /// pnlRoundResults control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlRoundResults;
+        
+        /// <summary>
+        /// roundResultsRepeater control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater roundResultsRepeater;
+        
+        /// <summary>
+        /// pnlChampionSummary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlChampionSummary;
+        
+        /// <summary>
+        /// lblChampionStrategyIcon control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblChampionStrategyIcon;
+        
+        /// <summary>
+        /// lblChampionStrategy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblChampionStrategy;
+        
+        /// <summary>
+        /// lblChampionName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblChampionName;
         
         /// <summary>
         /// scoreGrid control.
@@ -85,48 +148,12 @@ namespace RPS_Challenge {
         protected global::System.Web.UI.WebControls.Button btnReset;
         
         /// <summary>
-        /// fileDown1 control.
+        /// tournamentFilesRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton fileDown1;
-        
-        /// <summary>
-        /// fileDown2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton fileDown2;
-        
-        /// <summary>
-        /// fileDown3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton fileDown3;
-        
-        /// <summary>
-        /// fileDown4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton fileDown4;
-        
-        /// <summary>
-        /// fileDown5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton fileDown5;
+        protected global::System.Web.UI.WebControls.Repeater tournamentFilesRepeater;
     }
 }
